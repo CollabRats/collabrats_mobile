@@ -1,4 +1,15 @@
+import 'package:collabrats_mobile/presentation/register/ui/dob_screen.dart';
+import 'package:collabrats_mobile/presentation/register/ui/experience_screen.dart';
+import 'package:collabrats_mobile/presentation/register/ui/gender_screen.dart';
+import 'package:collabrats_mobile/presentation/register/ui/intention_screen.dart';
+import 'package:collabrats_mobile/presentation/register/ui/location_screen.dart';
+import 'package:collabrats_mobile/presentation/register/ui/name_screen.dart';
+import 'package:collabrats_mobile/presentation/register/ui/phone_screen.dart';
+import 'package:collabrats_mobile/presentation/register/ui/verification_screen.dart';
+import 'package:collabrats_mobile/presentation/splash/ui/splash_screen.dart';
 import 'package:collabrats_mobile/services/http_services.dart';
+import 'package:collabrats_mobile/utils/screen_utils.dart';
+import 'package:collabrats_mobile/utils/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -27,7 +38,23 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(debugShowCheckedModeBanner: false, home: const Base());
+    ScreenUtils.init(context);
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      theme: AppTheme.themeData,
+      initialRoute: '/splash',
+      routes: {
+        '/splash': (context) => const SplashScreen(),
+        '/phone': (context) => PhoneScreen(),
+        '/verify': (context) => VerificationScreen(),
+        '/name': (context) => NameScreen(),
+        '/dob': (context) => DobScreen(),
+        '/location': (context) => LocationScreen(),
+        '/gender': (context) => GenderScreen(),
+        '/intention': (context) => IntentionScreen(),
+        '/experience': (context) => ExperienceScreen(),
+      },
+    );
   }
 }
 
