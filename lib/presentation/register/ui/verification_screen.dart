@@ -78,7 +78,9 @@ class _VerificationScreenState extends State<VerificationScreen> {
                   style: Theme.of(context).textTheme.bodyMedium,
                 ),
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
                   child: Text(
                     "Edit",
                     style: Theme.of(context).textTheme.bodyMedium!.copyWith(
