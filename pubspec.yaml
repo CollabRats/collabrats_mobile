@@ -52,6 +52,7 @@ dependencies:
   geolocator: ^14.0.0
   geocoding: ^3.0.0
   modal_bottom_sheet: ^3.0.0
+  dotted_border: ^2.1.0
 
 dev_dependencies:
   flutter_test:

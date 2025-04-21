@@ -138,4 +138,54 @@ class Validators {
     }
     return null;
   }
+
+  static bool isValidFormat(String date) {
+    final regex = RegExp(r'^(0[1-9]|1[0-2])\/\d{4}$');
+    return regex.hasMatch(date);
+  }
+
+  static DateTime parseMMYYYY(String date) {
+    final parts = date.split('/');
+    final month = int.parse(parts[0]);
+    final year = int.parse(parts[1]);
+    return DateTime(year, month);
+  }
+
+  static bool isFutureDate(String date) {
+    final given = parseMMYYYY(date);
+    final now = DateTime.now();
+    final current = DateTime(now.year, now.month);
+    return given.isAfter(current);
+  }
+
+  static String? validateStartDate(String start) {
+    if (!isValidFormat(start)) {
+      return 'Required field';
+    }
+
+    if (isFutureDate(start)) {
+      return 'Start date cannot\nbe in the future';
+    }
+    return null;
+  }
+
+  static String? validateEndDate(String start, String end) {
+    if (!isValidFormat(end)) {
+      return 'Required field';
+    }
+
+    if (isFutureDate(end)) {
+      return 'End date cannot be in the future';
+    }
+
+    if (isValidFormat(start)) {
+      final startDate = parseMMYYYY(start);
+      final endDate = parseMMYYYY(end);
+      if (startDate.isAfter(endDate)) {
+        return 'End date must be after or equal to start date';
+      }
+    }
+
+    return null;
+  }
 }

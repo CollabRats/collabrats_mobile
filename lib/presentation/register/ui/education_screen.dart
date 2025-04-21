@@ -1,5 +1,5 @@
-import 'package:collabrats_mobile/data/register/data/add_experience_model.dart';
-import 'package:collabrats_mobile/presentation/register/bloc/add_experience_cubit.dart';
+import 'package:collabrats_mobile/data/register/data/add_education_model.dart';
+import 'package:collabrats_mobile/presentation/register/bloc/add_education_cubit.dart';
 import 'package:collabrats_mobile/utils/colors.dart';
 import 'package:collabrats_mobile/utils/screen_utils.dart';
 import 'package:collabrats_mobile/utils/validators.dart';
@@ -12,18 +12,17 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconsax_plus/iconsax_plus.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
-class ExperienceScreen extends StatefulWidget {
-  const ExperienceScreen({super.key});
+class EducationScreen extends StatefulWidget {
+  const EducationScreen({super.key});
 
   @override
-  State<ExperienceScreen> createState() => _ExperienceScreenState();
+  State<EducationScreen> createState() => _EducationScreenState();
 }
 
-class _ExperienceScreenState extends State<ExperienceScreen> {
-  final TextEditingController _industry = TextEditingController();
-  final TextEditingController _jobTitle = TextEditingController();
-  final TextEditingController _companyName = TextEditingController();
-  final TextEditingController _description = TextEditingController();
+class _EducationScreenState extends State<EducationScreen> {
+  final TextEditingController _eduLevel = TextEditingController();
+  final TextEditingController _fieldOfStudy = TextEditingController();
+  final TextEditingController _schoolUni = TextEditingController();
   final TextEditingController _startDate = TextEditingController();
   final TextEditingController _endDate = TextEditingController();
   bool isChecked = false;
@@ -31,10 +30,9 @@ class _ExperienceScreenState extends State<ExperienceScreen> {
 
   void clearData() {
     setState(() {
-      _industry.clear();
-      _jobTitle.clear();
-      _companyName.clear();
-      _description.clear();
+      _eduLevel.clear();
+      _fieldOfStudy.clear();
+      _schoolUni.clear();
       _startDate.clear();
       _endDate.clear();
     });
@@ -42,28 +40,28 @@ class _ExperienceScreenState extends State<ExperienceScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<AddExperienceCubit, List<AddExperienceModel>>(
+    return BlocBuilder<AddEducationCubit, List<AddEducationModel>>(
       builder: (context, state) {
         return Scaffold(
           body: SingleChildScrollView(
             child: CustomRegisterHeader(
               onSkip: () {
-                Navigator.pushNamed(context, '/education');
+                Navigator.pushNamed(context, '/lookingFor');
               },
               hasSkip: true,
-              imgPath: "assets/vectors/experience.svg",
-              progressValue: 7,
+              imgPath: "assets/vectors/education.svg",
+              progressValue: 8,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "Tell us about your\nprofessional\nexperience",
+                    "Tell us about your\neducation",
                     style:
                         Theme.of(context).textTheme.headlineLarge!.copyWith(),
                   ),
                   const SizedBox(height: 15),
                   Text(
-                    "You can edit and add more experiences later ",
+                    "You can edit and add more education later",
                     style: Theme.of(
                       context,
                     ).textTheme.bodyLarge!.copyWith(fontSize: 15),
@@ -78,8 +76,8 @@ class _ExperienceScreenState extends State<ExperienceScreen> {
                         itemCount: state.length,
                         itemBuilder: (context, index) {
                           return CustomTile(
-                            headText: state[index].company,
-                            subText1: state[index].position,
+                            headText: state[index].schoolUniName,
+                            subText1: state[index].fieldOfStudy,
                             startDate: state[index].startDate,
                             endDate: state[index].endDate,
                           );
@@ -126,55 +124,43 @@ class _ExperienceScreenState extends State<ExperienceScreen> {
                                             ),
                                             CustomTextFormfield(
                                               isActive: true,
-                                              headText: "Industry",
-                                              hintText: "Industry Type",
-                                              controller: _industry,
+                                              headText: "Education Level",
+                                              hintText: "Enter education level",
+                                              controller: _eduLevel,
                                               validator:
                                                   (val) =>
                                                       Validators.validateEmptyField(
                                                         val ?? '',
-                                                        "Industry",
+                                                        "Education Level",
                                                       ),
                                             ),
                                             const SizedBox(height: 10),
                                             CustomTextFormfield(
                                               isActive: true,
-                                              headText: "Position",
+                                              headText: "Field of Study/Major",
                                               hintText: "Enter job title",
-                                              controller: _jobTitle,
+                                              controller: _fieldOfStudy,
                                               validator:
                                                   (val) =>
                                                       Validators.validateEmptyField(
                                                         val ?? '',
-                                                        "Position",
+                                                        "Field of Study/Majo",
                                                       ),
                                             ),
                                             const SizedBox(height: 10),
                                             CustomTextFormfield(
                                               isActive: true,
-                                              headText: "Company",
-                                              hintText: "Enter Company Name",
-                                              controller: _companyName,
+                                              headText: "School/University",
+                                              hintText: "Enter University Name",
+                                              controller: _schoolUni,
                                               validator:
                                                   (val) =>
                                                       Validators.validateEmptyField(
                                                         val ?? '',
-                                                        "Company",
+                                                        "School/University",
                                                       ),
                                             ),
-                                            const SizedBox(height: 10),
-                                            CustomTextFormfield(
-                                              isActive: true,
-                                              headText: "Description",
-                                              hintText: "Add Description",
-                                              controller: _description,
-                                              validator:
-                                                  (val) =>
-                                                      Validators.validateEmptyField(
-                                                        val ?? '',
-                                                        "Description",
-                                                      ),
-                                            ),
+
                                             const SizedBox(height: 10),
                                             Row(
                                               mainAxisAlignment:
@@ -248,28 +234,23 @@ class _ExperienceScreenState extends State<ExperienceScreen> {
                                             ),
                                             const SizedBox(height: 30),
                                             CustomButton(
-                                              text: "Add Experience",
+                                              text: "Add Qualification",
                                               function: () {
                                                 if (_formKey.currentState!
                                                     .validate()) {
                                                   Navigator.pop(context);
                                                   context
-                                                      .read<
-                                                        AddExperienceCubit
-                                                      >()
+                                                      .read<AddEducationCubit>()
                                                       .addExp(
-                                                        AddExperienceModel(
-                                                          industry:
-                                                              _industry.text
+                                                        AddEducationModel(
+                                                          educationLevel:
+                                                              _eduLevel.text
                                                                   .trim(),
-                                                          position:
-                                                              _jobTitle.text
+                                                          fieldOfStudy:
+                                                              _fieldOfStudy.text
                                                                   .trim(),
-                                                          company:
-                                                              _companyName.text
-                                                                  .trim(),
-                                                          description:
-                                                              _description.text
+                                                          schoolUniName:
+                                                              _schoolUni.text
                                                                   .trim(),
                                                           startDate:
                                                               _startDate.text
@@ -301,7 +282,7 @@ class _ExperienceScreenState extends State<ExperienceScreen> {
                           ),
                           const SizedBox(width: 5),
                           Text(
-                            "Add Experience",
+                            "Add Education",
                             style: Theme.of(context).textTheme.bodyMedium!
                                 .copyWith(color: AppColors.blueColor),
                           ),
@@ -320,7 +301,7 @@ class _ExperienceScreenState extends State<ExperienceScreen> {
                     text: "Continue",
                     function: () {
                       if (true) {
-                        Navigator.pushNamed(context, '/education');
+                        Navigator.pushNamed(context, '/lookingFor');
                       }
                     },
                   )

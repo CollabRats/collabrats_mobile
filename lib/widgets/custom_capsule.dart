@@ -4,10 +4,12 @@ import 'package:flutter/material.dart';
 class CustomCapsule extends StatelessWidget {
   final String text;
   final bool isSelected;
+  final bool hasCross;
   const CustomCapsule({
     super.key,
     required this.text,
     required this.isSelected,
+    this.hasCross = false,
   });
 
   @override
@@ -22,7 +24,7 @@ class CustomCapsule extends StatelessWidget {
         ),
         borderRadius: BorderRadius.circular(20),
       ),
-      child: Text(text),
+      child: Text("$text${hasCross ? "    X" : ""}"),
     );
   }
 }

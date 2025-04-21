@@ -28,6 +28,7 @@ class CustomTextFormfield extends StatefulWidget {
   final String? hintText;
   final String? initialValue;
   final void Function(String)? countryCode;
+  final void Function(String)? submittedText;
   const CustomTextFormfield({
     super.key,
     required this.headText,
@@ -50,6 +51,7 @@ class CustomTextFormfield extends StatefulWidget {
     this.initialValue,
     this.isActive = true,
     this.countryCode,
+    this.submittedText,
   });
 
   @override
@@ -158,7 +160,7 @@ class _CustomTextFormfieldState extends State<CustomTextFormfield> {
                             suffixIcon: GestureDetector(
                               onTap: () async {
                                 final DateFormat formatter = DateFormat(
-                                  'mm/yyyy',
+                                  'MM/yyyy',
                                 );
 
                                 final DateTime? picked = await showDatePicker(
@@ -166,11 +168,16 @@ class _CustomTextFormfieldState extends State<CustomTextFormfield> {
                                   initialDate: DateTime.now(),
                                   firstDate: DateTime(1900),
                                   lastDate: DateTime.now(),
+                                  helpText: 'Select Month and Year',
+                                  initialEntryMode:
+                                      DatePickerEntryMode.calendar,
                                 );
-                                widget.controller.text = formatter.format(
-                                  picked!,
-                                );
-                                setState(() {});
+                                if (picked != null) {
+                                  widget.controller.text = formatter.format(
+                                    picked,
+                                  );
+                                  setState(() {});
+                                }
                               },
                               child: Icon(
                                 color: AppColors.blueColor,
@@ -191,6 +198,11 @@ class _CustomTextFormfieldState extends State<CustomTextFormfield> {
                           validator: widget.validator,
                         )
                         : TextFormField(
+                          onFieldSubmitted: (value) {
+                            setState(() {
+                              widget.submittedText!(value);
+                            });
+                          },
                           initialValue: widget.initialValue,
                           onChanged: widget.onChanged,
                           focusNode: widget.focusNode,

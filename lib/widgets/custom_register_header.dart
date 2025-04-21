@@ -9,12 +9,14 @@ class CustomRegisterHeader extends StatefulWidget {
   final double progressValue;
   final String imgPath;
   final bool hasSkip;
+  final void Function()? onSkip;
   const CustomRegisterHeader({
     super.key,
     required this.child,
     required this.progressValue,
     required this.imgPath,
     this.hasSkip = false,
+    this.onSkip,
   });
 
   @override
@@ -35,7 +37,7 @@ class _CustomRegisterHeaderState extends State<CustomRegisterHeader> {
                 ? Align(
                   alignment: Alignment.topRight,
                   child: TextButton(
-                    onPressed: () {},
+                    onPressed: widget.onSkip,
                     child: Text(
                       "Skip for later",
                       style: Theme.of(context).textTheme.titleSmall!.copyWith(
@@ -57,7 +59,7 @@ class _CustomRegisterHeaderState extends State<CustomRegisterHeader> {
                 aspectRatio: 1,
                 valueNotifier: _valueNotifier,
                 progress: widget.progressValue,
-                maxProgress: 17,
+                maxProgress: 12,
                 corners: StrokeCap.butt,
                 foregroundColor: AppColors.blackColor,
                 backgroundColor: AppColors.greyColor,
