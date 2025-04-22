@@ -97,7 +97,6 @@ class _AddPhotoVideoScreenState extends State<AddPhotoVideoScreen> {
                   ? InkWell(
                     onTap: pickProfilePicture,
                     child: DottedBorder(
-                      color: AppColors.blueColor,
                       strokeWidth: 0.2,
                       borderType: BorderType.RRect,
                       radius: Radius.circular(8),
