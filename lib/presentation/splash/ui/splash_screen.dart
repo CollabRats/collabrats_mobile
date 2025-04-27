@@ -12,7 +12,8 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
   void _navigateToMobile() {
-    Navigator.pushNamed(context, '/phone');
+    // Navigator.pushReplacementNamed(context, '/signup');
+    Navigator.pushReplacementNamed(context, '/base');
   }
 
   @override

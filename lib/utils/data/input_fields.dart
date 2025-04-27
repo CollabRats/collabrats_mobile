@@ -1,7 +1,5 @@
 class InputFields {
-  // industry_data.dart
-
-  List<String> industryTypes = [
+  static const List<String> industryTypes = [
     'Information Technology (IT)',
     'Finance / Banking / Insurance',
     'Healthcare / Medical',
@@ -34,7 +32,7 @@ class InputFields {
     'Cybersecurity',
   ];
 
-  List<String> positionTypes = [
+  static const List<String> positionTypes = [
     'Intern',
     'Entry-Level',
     'Mid-Level',
@@ -55,7 +53,7 @@ class InputFields {
     'Trainee',
   ];
 
-  List<String> educationLevels = [
+  static const List<String> educationLevels = [
     'No Formal Education',
     'Primary Education',
     'Secondary Education',
@@ -76,7 +74,7 @@ class InputFields {
     'Chartered Professional (e.g. CA, CFA)',
   ];
 
-  List<String> fieldsOfStudy = [
+  static const List<String> fieldsOfStudy = [
     'Computer Science',
     'Information Technology',
     'Software Engineering',
@@ -109,4 +107,10 @@ class InputFields {
     'Architecture',
     'Environmental Science',
   ];
+  static List<String> getSuggestions(String query, List<String> list) {
+    List<String> matches = [];
+    matches.addAll(list);
+    matches.retainWhere((e) => e.toLowerCase().contains(query.toLowerCase()));
+    return matches;
+  }
 }

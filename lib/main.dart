@@ -1,3 +1,8 @@
+import 'package:collabrats_mobile/base.dart';
+import 'package:collabrats_mobile/presentation/chat/ui/chat_details_screen.dart';
+import 'package:collabrats_mobile/presentation/chat/ui/chat_screen.dart';
+import 'package:collabrats_mobile/presentation/discover/ui/discover_screen.dart';
+import 'package:collabrats_mobile/presentation/post/ui/post_screen.dart';
 import 'package:collabrats_mobile/presentation/register/bloc/add_education_cubit.dart';
 import 'package:collabrats_mobile/presentation/register/bloc/add_experience_cubit.dart';
 import 'package:collabrats_mobile/presentation/register/ui/add_photo_video_screen.dart';
@@ -11,7 +16,9 @@ import 'package:collabrats_mobile/presentation/register/ui/location_screen.dart'
 import 'package:collabrats_mobile/presentation/register/ui/looking_for_screen.dart';
 import 'package:collabrats_mobile/presentation/register/ui/name_screen.dart';
 import 'package:collabrats_mobile/presentation/register/ui/phone_screen.dart';
+import 'package:collabrats_mobile/presentation/register/ui/signup_screen.dart';
 import 'package:collabrats_mobile/presentation/register/ui/verification_screen.dart';
+import 'package:collabrats_mobile/presentation/requests/ui/request_screen.dart';
 import 'package:collabrats_mobile/presentation/splash/ui/splash_screen.dart';
 import 'package:collabrats_mobile/services/http_services.dart';
 import 'package:collabrats_mobile/utils/screen_utils.dart';
@@ -57,6 +64,8 @@ class MyApp extends StatelessWidget {
         initialRoute: '/splash',
         routes: {
           '/splash': (context) => const SplashScreen(),
+          '/signup': (context) => SignupScreen(),
+          '/base': (context) => Base(),
           '/phone': (context) => PhoneScreen(),
           '/verify': (context) => VerificationScreen(),
           '/name': (context) => NameScreen(),
@@ -69,17 +78,13 @@ class MyApp extends StatelessWidget {
           '/lookingFor': (context) => LookingForScreen(),
           '/hobby': (context) => HobbyScreen(),
           '/photo': (context) => AddPhotoVideoScreen(),
+          '/discover': (context) => DiscoverScreen(),
+          '/post': (context) => PostScreen(),
+          '/request': (context) => RequestScreen(),
+          '/chat': (context) => ChatScreen(),
+          '/chatDetails': (context) => ChatDetailsScreen(),
         },
       ),
     );
-  }
-}
-
-class Base extends StatelessWidget {
-  const Base({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Scaffold();
   }
 }

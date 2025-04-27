@@ -1,6 +1,7 @@
 import 'package:collabrats_mobile/data/register/data/add_experience_model.dart';
 import 'package:collabrats_mobile/presentation/register/bloc/add_experience_cubit.dart';
 import 'package:collabrats_mobile/utils/colors.dart';
+import 'package:collabrats_mobile/utils/data/input_fields.dart';
 import 'package:collabrats_mobile/utils/screen_utils.dart';
 import 'package:collabrats_mobile/utils/validators.dart';
 import 'package:collabrats_mobile/widgets/custom_button.dart';
@@ -9,6 +10,7 @@ import 'package:collabrats_mobile/widgets/custom_textformfield.dart';
 import 'package:collabrats_mobile/widgets/custom_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'package:iconsax_plus/iconsax_plus.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
@@ -124,18 +126,51 @@ class _ExperienceScreenState extends State<ExperienceScreen> {
                                                   ScreenUtils.screenHeight *
                                                   .02,
                                             ),
-                                            CustomTextFormfield(
-                                              isActive: true,
-                                              headText: "Industry",
-                                              hintText: "Industry Type",
-                                              controller: _industry,
-                                              validator:
-                                                  (val) =>
-                                                      Validators.validateEmptyField(
-                                                        val ?? '',
-                                                        "Industry",
-                                                      ),
-                                            ),
+                                            // TypeAheadField(
+                                            //   showOnFocus: true,
+                                            //   autoFlipMinHeight: 1,
+                                            //   hideWithKeyboard: true,
+                                            //   controller: _industry,
+                                            //   hideOnEmpty: true,
+
+                                            //   suggestionsCallback: (
+                                            //     String search,
+                                            //   ) {
+                                            //     return InputFields.getSuggestions(
+                                            //       search,
+                                            //       InputFields.industryTypes,
+                                            //     );
+                                            //   },
+                                            //   itemBuilder: (
+                                            //     context,
+                                            //     String suggestions,
+                                            //   ) {
+                                            //     return ListTile(
+                                            //       title: Text(suggestions),
+                                            //     );
+                                            //   },
+                                            //   onSelected: (String value) {
+                                            //     setState(() {
+                                            //       _industry.text = value;
+                                            //     });
+                                            //   },
+
+                                            //   builder:
+                                            //       (
+                                            //         context,
+                                            //         contlr,
+                                            //         focusNode,
+                                            //       ) => TextField(
+                                            //         controller: contlr,
+                                            //         focusNode: focusNode,
+                                            //         autofocus: true,
+                                            //         decoration: InputDecoration(
+                                            //           border:
+                                            //               OutlineInputBorder(),
+                                            //           labelText: 'City',
+                                            //         ),
+                                            //       ),
+                                            // ),
                                             const SizedBox(height: 10),
                                             CustomTextFormfield(
                                               isActive: true,
@@ -147,6 +182,19 @@ class _ExperienceScreenState extends State<ExperienceScreen> {
                                                       Validators.validateEmptyField(
                                                         val ?? '',
                                                         "Position",
+                                                      ),
+                                            ),
+                                            CustomTextFormfield(
+                                              isActive: true,
+                                              headText: "Industry",
+                                              hintText: "Industry Type",
+                                              controller: _industry,
+
+                                              validator:
+                                                  (val) =>
+                                                      Validators.validateEmptyField(
+                                                        val ?? '',
+                                                        "Industry",
                                                       ),
                                             ),
                                             const SizedBox(height: 10),
@@ -282,6 +330,7 @@ class _ExperienceScreenState extends State<ExperienceScreen> {
                                                 }
                                               },
                                             ),
+                                            const SizedBox(height: 10),
                                           ],
                                         ),
                                       ),
