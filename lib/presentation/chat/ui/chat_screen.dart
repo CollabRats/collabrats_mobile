@@ -3,7 +3,6 @@ import 'package:collabrats_mobile/widgets/chat_tile.dart';
 import 'package:collabrats_mobile/widgets/custom_capsule.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:iconsax_plus/iconsax_plus.dart';
 
 class ChatScreen extends StatefulWidget {
   const ChatScreen({super.key});
@@ -35,7 +34,7 @@ class _ChatScreenState extends State<ChatScreen> {
                   children: [
                     Text(
                       "Chats",
-                      style: Theme.of(context).textTheme.headlineMedium!,
+                      style: Theme.of(context).textTheme.headlineLarge!,
                     ),
                     InkWell(
                       onTap: () {},

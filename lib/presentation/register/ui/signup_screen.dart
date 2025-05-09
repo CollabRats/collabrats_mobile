@@ -88,7 +88,12 @@ class SignupScreen extends StatelessWidget {
           const SizedBox(height: 15),
           SizedBox(
             width: ScreenUtils.screenWidth * .9,
-            child: CustomButton(text: "Login", function: () {}),
+            child: CustomButton(
+              text: "Login",
+              function: () {
+                Navigator.pushNamed(context, "/base");
+              },
+            ),
           ),
           const SizedBox(height: 45),
           SizedBox(

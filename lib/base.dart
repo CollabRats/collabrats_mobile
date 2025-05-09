@@ -1,6 +1,7 @@
 import 'package:collabrats_mobile/presentation/chat/ui/chat_screen.dart';
 import 'package:collabrats_mobile/presentation/discover/ui/discover_screen.dart';
 import 'package:collabrats_mobile/presentation/post/ui/post_screen.dart';
+import 'package:collabrats_mobile/presentation/profile/ui/profile_screen.dart';
 import 'package:collabrats_mobile/presentation/requests/ui/request_screen.dart';
 import 'package:collabrats_mobile/utils/colors.dart';
 import 'package:collabrats_mobile/utils/screen_utils.dart';
@@ -24,6 +25,7 @@ class _BaseState extends State<Base> {
   }
 
   final List<Widget> listWidget = [
+    ProfileScreen(),
     DiscoverScreen(),
     PostScreen(),
     RequestScreen(),
@@ -49,6 +51,19 @@ class _BaseState extends State<Base> {
               onTap: (value) => setItems(value),
               type: BottomNavigationBarType.fixed,
               items: <BottomNavigationBarItem>[
+                BottomNavigationBarItem(
+                  icon: SvgPicture.asset(
+                    "assets/vectors/profile_inactive.svg",
+                    height: 30,
+                    width: 30,
+                  ),
+                  activeIcon: SvgPicture.asset(
+                    "assets/vectors/profile_active.svg",
+                    height: 30,
+                    width: 30,
+                  ),
+                  label: "Profile",
+                ),
                 BottomNavigationBarItem(
                   icon: SvgPicture.asset(
                     "assets/vectors/discover_inactive.svg",

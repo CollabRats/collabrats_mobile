@@ -9,8 +9,10 @@ import 'package:intl/intl.dart';
 
 class CustomTextFormfield extends StatefulWidget {
   final bool isActive;
+  final bool isShort;
   final bool showLoader;
   final String headText;
+  final bool isDescp;
   final TextEditingController controller;
   final FocusNode? focusNode;
   final void Function(String)? onChanged;
@@ -52,6 +54,8 @@ class CustomTextFormfield extends StatefulWidget {
     this.isActive = true,
     this.countryCode,
     this.submittedText,
+    this.isDescp = false,
+    this.isShort = false,
   });
 
   @override
@@ -130,15 +134,16 @@ class _CustomTextFormfieldState extends State<CustomTextFormfield> {
               ignorePointers: true,
               enabled: widget.showLoader,
               child: Container(
-                height: 60,
+                height: widget.isDescp ? 140 : 60,
                 padding: EdgeInsets.symmetric(horizontal: 20),
                 width:
-                    widget.isDate
+                    widget.isDate || widget.isShort
                         ? ScreenUtils.screenWidth * .35
                         : (widget.isMobile
                             ? size.width * 0.53
                             : size.width * 0.89),
-                alignment: Alignment.center,
+                alignment:
+                    widget.isDescp ? Alignment.topLeft : Alignment.center,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(4),
                   color: AppColors.lightGreyColor,
@@ -198,6 +203,7 @@ class _CustomTextFormfieldState extends State<CustomTextFormfield> {
                           validator: widget.validator,
                         )
                         : TextFormField(
+                          maxLines: widget.isDescp ? 30 : 1,
                           onFieldSubmitted: (value) {
                             setState(() {
                               widget.submittedText!(value);
