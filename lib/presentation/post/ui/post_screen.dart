@@ -68,6 +68,9 @@ class PostScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 10),
                 PostTile(
+                  onTap: () {
+                    Navigator.pushNamed(context, '/createCommunity');
+                  },
                   imgPath: "assets/vectors/community.svg",
                   headText: "Create Community",
                   subText: "Connect with your community",

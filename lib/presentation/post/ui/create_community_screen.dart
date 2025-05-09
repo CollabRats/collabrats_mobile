@@ -18,14 +18,14 @@ import 'package:iconsax_plus/iconsax_plus.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
-class PostEventScreen extends StatefulWidget {
-  const PostEventScreen({super.key});
+class CreateCommunityScreen extends StatefulWidget {
+  const CreateCommunityScreen({super.key});
 
   @override
-  State<PostEventScreen> createState() => _PostEventScreenState();
+  State<CreateCommunityScreen> createState() => _CreateCommunityScreenState();
 }
 
-class _PostEventScreenState extends State<PostEventScreen> {
+class _CreateCommunityScreenState extends State<CreateCommunityScreen> {
   final TextEditingController _addSkills = TextEditingController();
   final TextEditingController _packageName = TextEditingController();
   final TextEditingController _packageDesc = TextEditingController();
@@ -227,7 +227,7 @@ class _PostEventScreenState extends State<PostEventScreen> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            "Post Event",
+                            "Create Community",
                             style: Theme.of(context).textTheme.headlineMedium,
                           ),
                           IconButton(
@@ -240,40 +240,30 @@ class _PostEventScreenState extends State<PostEventScreen> {
                       ),
                       const SizedBox(height: 35),
                       CustomTextFormfield(
-                        hintText: "Enter event Title",
-                        headText: "Event Title",
+                        hintText: "Enter Community Name",
+                        headText: "Community Name",
                         controller: _eventTitle,
                         validator:
                             (val) => Validators.validateEmptyField(
                               val ?? "",
-                              "Title",
+                              "Community Name",
                             ),
                       ),
                       const SizedBox(height: 20),
                       CustomTextFormfield(
-                        hintText: "Enter Event Organizer",
-                        headText: "Event Organizer Name",
+                        isDescp: true,
+                        hintText: "Add Community Description",
+                        headText: "Community Description",
                         controller: _eventOragniserName,
                         validator:
                             (val) => Validators.validateEmptyField(
                               val ?? "",
-                              "Event Organizer Name",
-                            ),
-                      ),
-                      const SizedBox(height: 20),
-                      CustomTextFormfield(
-                        hintText: "Enter Event Location",
-                        headText: "Event Location",
-                        controller: _eventLocation,
-                        validator:
-                            (val) => Validators.validateEmptyField(
-                              val ?? "",
-                              "Location",
+                              "Description",
                             ),
                       ),
                       const SizedBox(height: 20),
                       Text(
-                        "Event Type",
+                        "Community Type",
                         style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                           fontWeight: FontWeight.w700,
                         ),
@@ -281,175 +271,18 @@ class _PostEventScreenState extends State<PostEventScreen> {
                       const SizedBox(height: 10),
                       _serviceTypeWidget(),
                       const SizedBox(height: 20),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          CustomTextFormfield(
-                            isDate: true,
-                            headText: "Event Date",
-                            controller: _eventDate,
-                            validator:
-                                (val) => Validators.validateEmptyField(
-                                  val ?? '',
-                                  "Date",
-                                ),
-                          ),
-                          CustomTextFormfield(
-                            isTime: true,
-                            headText: "Event Time",
-                            controller: _eventTime,
-                            validator:
-                                (val) => Validators.validateEmptyField(
-                                  val ?? '',
-                                  "Time",
-                                ),
-                          ),
-                        ],
+                      CustomTextFormfield(
+                        hintText: "Enter maximum numbers of members",
+                        headText: "Member Limit ",
+                        controller: _eventLocation,
+                        keyboardType: TextInputType.number,
+                        validator:
+                            (val) => Validators.validateEmptyField(
+                              val ?? "",
+                              "Location",
+                            ),
                       ),
                       const SizedBox(height: 20),
-                      Text(
-                        "Ticket Types",
-                        style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                          fontWeight: FontWeight.w700,
-                        ),
-                      ),
-                      ticketList.isNotEmpty
-                          ? ListView.builder(
-                            physics: NeverScrollableScrollPhysics(),
-                            shrinkWrap: true,
-                            itemCount: ticketList.length,
-                            itemBuilder:
-                                (context, index) => Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Expanded(
-                                      child: Container(
-                                        margin: EdgeInsets.only(top: 10),
-                                        padding: EdgeInsets.all(10),
-                                        decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(
-                                            4,
-                                          ),
-                                          border: Border.all(
-                                            color: AppColors.greyColor,
-                                          ),
-                                        ),
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment
-                                                      .spaceBetween,
-                                              children: [
-                                                Expanded(
-                                                  child: Container(
-                                                    margin: EdgeInsets.only(
-                                                      right: 15,
-                                                    ),
-                                                    padding: EdgeInsets.all(10),
-                                                    decoration: BoxDecoration(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                            4,
-                                                          ),
-                                                      color:
-                                                          AppColors
-                                                              .lightGreyColor,
-                                                    ),
-                                                    child: Text(
-                                                      ticketList[index]
-                                                          .ticketName,
-                                                      style:
-                                                          Theme.of(
-                                                            context,
-                                                          ).textTheme.bodyLarge,
-                                                    ),
-                                                  ),
-                                                ),
-
-                                                Container(
-                                                  padding: EdgeInsets.all(10),
-                                                  decoration: BoxDecoration(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                          4,
-                                                        ),
-                                                    color:
-                                                        AppColors
-                                                            .lightGreyColor,
-                                                  ),
-                                                  child: Text(
-                                                    "₹${ticketList[index].ticketPrice}",
-                                                    style:
-                                                        Theme.of(context)
-                                                            .textTheme
-                                                            .headlineSmall,
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                            const SizedBox(height: 15),
-                                            Container(
-                                              width: double.infinity,
-                                              padding: EdgeInsets.all(10),
-                                              decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(4),
-                                                color: AppColors.lightGreyColor,
-                                              ),
-                                              child: Text(
-                                                ticketList[index].addDescp,
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                    Center(
-                                      child: IconButton(
-                                        onPressed: () {
-                                          context
-                                              .read<AddTicketCubit>()
-                                              .removeTicket(ticketList[index]);
-                                        },
-                                        icon: Icon(
-                                          Icons.remove_circle,
-                                          color: Colors.red,
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                          )
-                          : const SizedBox.shrink(),
-                      const SizedBox(height: 20),
-                      InkWell(
-                        onTap: addPackage,
-                        borderRadius: BorderRadius.circular(12),
-                        child: SizedBox(
-                          width: ScreenUtils.screenWidth * .33,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Icon(
-                                IconsaxPlusLinear.add,
-                                color: AppColors.blueColor,
-                                size: 19,
-                              ),
-                              const SizedBox(width: 5),
-                              Text(
-                                "Add Tickets",
-                                style: Theme.of(context).textTheme.bodyMedium!
-                                    .copyWith(color: AppColors.blueColor),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                      const SizedBox(height: 40),
                       CustomTextFormfield(
                         submittedText: (p0) {
                           if (!skills.contains(p0) && skills.length < 5) {
@@ -458,8 +291,8 @@ class _PostEventScreenState extends State<PostEventScreen> {
                           _addSkills.clear();
                           setState(() {});
                         },
-                        hintText: "Add Event Catergories",
-                        headText: "Event Catergories",
+                        hintText: "Add Community Categories",
+                        headText: "Community Settings",
                         controller: _addSkills,
                       ),
                       const SizedBox(height: 10),
@@ -484,12 +317,20 @@ class _PostEventScreenState extends State<PostEventScreen> {
                                 )
                                 .toList(),
                       ),
-                      const SizedBox(height: 15),
+                      const SizedBox(height: 20),
+
+                      CustomTextFormfield(
+                        isDescp: true,
+                        hintText: "Add Guidelines and rules",
+                        headText: "Community Rules",
+                        controller: _addProjectLink,
+                      ),
+                      const SizedBox(height: 20),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            "Add Event Photo Gallery",
+                            "Add Cover Photo",
                             style: Theme.of(context).textTheme.bodyMedium!
                                 .copyWith(fontWeight: FontWeight.w700),
                           ),
@@ -511,6 +352,60 @@ class _PostEventScreenState extends State<PostEventScreen> {
                         ],
                       ),
                       const SizedBox(height: 10),
+                      uploadFile == null
+                          ? InkWell(
+                            onTap: pickProfilePicture,
+                            child: DottedBorder(
+                              strokeWidth: 0.2,
+                              borderType: BorderType.RRect,
+                              radius: Radius.circular(8),
+                              strokeCap: StrokeCap.round,
+                              child: Container(
+                                width: ScreenUtils.screenWidth * .9,
+                                padding: EdgeInsets.all(20),
+
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Icon(Icons.cloud_upload_outlined),
+                                    const SizedBox(height: 5),
+                                    // Icon(IconsaxPlusBold.cloud_add),
+                                    Text("Click to select from device"),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          )
+                          : InkWell(
+                            onTap: pickProfilePicture,
+                            child: Container(
+                              padding: EdgeInsets.all(20),
+                              height: ScreenUtils.screenHeight * .3,
+                              width: ScreenUtils.screenWidth * .9,
+                              decoration: BoxDecoration(
+                                border: Border.all(color: AppColors.blueColor),
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                              child: image,
+                            ),
+                          ),
+                      const SizedBox(height: 20),
+                      const SizedBox(height: 20),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            "Add Photo Gallery",
+                            style: Theme.of(context).textTheme.bodyMedium!
+                                .copyWith(fontWeight: FontWeight.w700),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 10),
+
                       imageFileList!.isNotEmpty
                           ? SizedBox(
                             height: 120,
@@ -560,7 +455,6 @@ class _PostEventScreenState extends State<PostEventScreen> {
                               children: [
                                 Icon(Icons.cloud_upload_outlined),
                                 const SizedBox(height: 5),
-                                // Icon(IconsaxPlusBold.cloud_add),
                                 Text("Click to select from device"),
                               ],
                             ),
@@ -568,30 +462,6 @@ class _PostEventScreenState extends State<PostEventScreen> {
                         ),
                       ),
 
-                      // InkWell(
-                      //   onTap: pickProfilePicture,
-                      //   child: Container(
-                      //     padding: EdgeInsets.all(20),
-                      //     height: ScreenUtils.screenHeight * .3,
-                      //     width: ScreenUtils.screenWidth * .9,
-                      //     decoration: BoxDecoration(
-                      //       border: Border.all(
-                      //         color: AppColors.blueColor,
-                      //       ),
-                      //       borderRadius: BorderRadius.circular(8),
-                      //     ),
-                      //     child: image,
-                      //   ),
-                      // ),
-                      const SizedBox(height: 20),
-
-                      CustomTextFormfield(
-                        isDescp: true,
-                        hintText:
-                            "Additional Information like directions, requirements etc.",
-                        headText: "Additional Information",
-                        controller: _addSkills,
-                      ),
                       const SizedBox(height: 50),
                     ],
                   ),
@@ -603,7 +473,7 @@ class _PostEventScreenState extends State<PostEventScreen> {
               FloatingActionButtonLocation.centerDocked,
           floatingActionButton: SizedBox(
             width: ScreenUtils.screenWidth * 0.85,
-            child: CustomButton(text: "Post Event", function: () {}),
+            child: CustomButton(text: "Create Community", function: () {}),
           ),
         );
       },
@@ -623,7 +493,7 @@ class _PostEventScreenState extends State<PostEventScreen> {
             });
           },
           child: CustomCapsule(
-            text: "In-person",
+            text: "Public",
             isSelected: professionalIndex == 0,
           ),
         ),
@@ -635,20 +505,8 @@ class _PostEventScreenState extends State<PostEventScreen> {
             });
           },
           child: CustomCapsule(
-            text: "Virtual",
+            text: "Private",
             isSelected: professionalIndex == 1,
-          ),
-        ),
-        InkWell(
-          borderRadius: BorderRadius.circular(20),
-          onTap: () {
-            setState(() {
-              professionalIndex = 2;
-            });
-          },
-          child: CustomCapsule(
-            text: "Hybrid",
-            isSelected: professionalIndex == 2,
           ),
         ),
       ],

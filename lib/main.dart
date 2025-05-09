@@ -5,6 +5,7 @@ import 'package:collabrats_mobile/presentation/discover/ui/discover_screen.dart'
 import 'package:collabrats_mobile/presentation/post/bloc/add_package_cubit.dart';
 import 'package:collabrats_mobile/presentation/post/bloc/add_project_cubit.dart';
 import 'package:collabrats_mobile/presentation/post/bloc/add_ticket_cubit.dart';
+import 'package:collabrats_mobile/presentation/post/ui/create_community_screen.dart';
 import 'package:collabrats_mobile/presentation/post/ui/post_event_screen.dart';
 import 'package:collabrats_mobile/presentation/post/ui/post_gig_screen.dart';
 import 'package:collabrats_mobile/presentation/post/ui/post_job_screen.dart';
@@ -97,6 +98,7 @@ class MyApp extends StatelessWidget {
           '/postGig': (context) => PostGigScreen(),
           '/postService': (context) => PostServiceScreen(),
           '/postEvent': (context) => PostEventScreen(),
+          '/createCommunity': (context) => CreateCommunityScreen(),
         },
       ),
     );
