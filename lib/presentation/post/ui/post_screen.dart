@@ -58,6 +58,9 @@ class PostScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 10),
                 PostTile(
+                  onTap: () {
+                    Navigator.pushNamed(context, '/postEvent');
+                  },
                   imgPath: "assets/vectors/event.svg",
                   headText: "Post Event",
                   subText: "Share upcoming events",

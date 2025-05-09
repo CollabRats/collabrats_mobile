@@ -4,6 +4,8 @@ import 'package:collabrats_mobile/presentation/chat/ui/chat_screen.dart';
 import 'package:collabrats_mobile/presentation/discover/ui/discover_screen.dart';
 import 'package:collabrats_mobile/presentation/post/bloc/add_package_cubit.dart';
 import 'package:collabrats_mobile/presentation/post/bloc/add_project_cubit.dart';
+import 'package:collabrats_mobile/presentation/post/bloc/add_ticket_cubit.dart';
+import 'package:collabrats_mobile/presentation/post/ui/post_event_screen.dart';
 import 'package:collabrats_mobile/presentation/post/ui/post_gig_screen.dart';
 import 'package:collabrats_mobile/presentation/post/ui/post_job_screen.dart';
 import 'package:collabrats_mobile/presentation/post/ui/post_screen.dart';
@@ -64,6 +66,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (_) => AddEducationCubit()),
         BlocProvider(create: (_) => AddPackageCubit()),
         BlocProvider(create: (_) => AddProjectCubit()),
+        BlocProvider(create: (_) => AddTicketCubit()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -93,6 +96,7 @@ class MyApp extends StatelessWidget {
           '/postJob': (context) => PostJobScreen(),
           '/postGig': (context) => PostGigScreen(),
           '/postService': (context) => PostServiceScreen(),
+          '/postEvent': (context) => PostEventScreen(),
         },
       ),
     );

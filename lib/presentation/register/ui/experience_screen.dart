@@ -10,7 +10,6 @@ import 'package:collabrats_mobile/widgets/custom_textformfield.dart';
 import 'package:collabrats_mobile/widgets/custom_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'package:iconsax_plus/iconsax_plus.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 

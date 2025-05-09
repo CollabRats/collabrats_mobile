@@ -10,6 +10,7 @@ import 'package:intl/intl.dart';
 class CustomTextFormfield extends StatefulWidget {
   final bool isActive;
   final bool isShort;
+  final bool isTime;
   final bool showLoader;
   final String headText;
   final bool isDescp;
@@ -56,6 +57,7 @@ class CustomTextFormfield extends StatefulWidget {
     this.submittedText,
     this.isDescp = false,
     this.isShort = false,
+    this.isTime = false,
   });
 
   @override
@@ -137,7 +139,7 @@ class _CustomTextFormfieldState extends State<CustomTextFormfield> {
                 height: widget.isDescp ? 140 : 60,
                 padding: EdgeInsets.symmetric(horizontal: 20),
                 width:
-                    widget.isDate || widget.isShort
+                    widget.isDate || widget.isShort || widget.isTime
                         ? ScreenUtils.screenWidth * .35
                         : (widget.isMobile
                             ? size.width * 0.53
@@ -187,6 +189,60 @@ class _CustomTextFormfieldState extends State<CustomTextFormfield> {
                               child: Icon(
                                 color: AppColors.blueColor,
                                 Icons.calendar_month,
+                              ),
+                            ),
+                            border: InputBorder.none,
+                          ),
+                          autovalidateMode: AutovalidateMode.onUserInteraction,
+                          style: Theme.of(context).textTheme.bodyMedium,
+                          keyboardType: TextInputType.number,
+                          inputFormatters: [
+                            MultiMaskedTextInputFormatter(
+                              masks: ['xx/xxxx'],
+                              separator: '/',
+                            ),
+                          ],
+                          validator: widget.validator,
+                        )
+                        : widget.isTime
+                        ? TextFormField(
+                          enabled: widget.isActive,
+                          controller: widget.controller,
+                          decoration: InputDecoration(
+                            hintStyle: Theme.of(context).textTheme.bodyMedium!
+                                .copyWith(color: AppColors.midGreyColor),
+                            hintText:
+                                widget.hintText == '' ? null : widget.hintText,
+                            suffixIconConstraints: BoxConstraints(
+                              maxHeight: 22,
+                              maxWidth: 16,
+                            ),
+                            suffixIcon: GestureDetector(
+                              onTap: () async {
+                                String formatTimeOfDay(
+                                  TimeOfDay tod,
+                                  BuildContext context,
+                                ) {
+                                  return tod.format(
+                                    context,
+                                  ); // Uses system locale (e.g., 5:30 PM)
+                                }
+
+                                final TimeOfDay? picked = await showTimePicker(
+                                  context: context,
+                                  initialTime: TimeOfDay.now(),
+                                );
+                                if (picked != null) {
+                                  widget.controller.text = formatTimeOfDay(
+                                    picked,
+                                    context,
+                                  );
+                                  setState(() {});
+                                }
+                              },
+                              child: Icon(
+                                color: AppColors.blueColor,
+                                Icons.alarm,
                               ),
                             ),
                             border: InputBorder.none,
