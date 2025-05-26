@@ -32,12 +32,12 @@ class _HobbyScreenState extends State<HobbyScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                "Add your skills,\ninterests & hobbies",
+                "Add your Skills,\nInterests & Hobbies",
                 style: Theme.of(context).textTheme.headlineLarge!.copyWith(),
               ),
               const SizedBox(height: 15),
               Text(
-                "select up to 5 in each field",
+                "Select up to 5 in each field",
                 style: Theme.of(context).textTheme.bodyMedium!.copyWith(),
               ),
               const SizedBox(height: 20),

@@ -5,17 +5,22 @@ class CustomCapsule extends StatelessWidget {
   final String text;
   final bool isSelected;
   final bool hasCross;
+  final bool isSmall;
   const CustomCapsule({
     super.key,
     required this.text,
     required this.isSelected,
     this.hasCross = false,
+    this.isSmall = false,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      padding: EdgeInsets.symmetric(
+        horizontal: isSmall ? 10 : 16,
+        vertical: isSmall ? 4 : 8,
+      ),
       decoration: BoxDecoration(
         color: AppColors.lightPurple,
         border: Border.all(

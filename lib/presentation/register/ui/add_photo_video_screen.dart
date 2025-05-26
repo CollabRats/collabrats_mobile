@@ -63,7 +63,7 @@ class _AddPhotoVideoScreenState extends State<AddPhotoVideoScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                "Add your profile\nphoto",
+                "Add your Profile Photo",
                 style: Theme.of(context).textTheme.headlineLarge!.copyWith(),
               ),
               const SizedBox(height: 15),

@@ -58,7 +58,7 @@ class _ExperienceScreenState extends State<ExperienceScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "Tell us about your\nprofessional\nexperience",
+                    "Tell us about your\nprofessional experience",
                     style:
                         Theme.of(context).textTheme.headlineLarge!.copyWith(),
                   ),

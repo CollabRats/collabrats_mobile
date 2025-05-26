@@ -28,7 +28,7 @@ class _IntentionScreenState extends State<IntentionScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              "What’s your\nintentions ?",
+              "What are your\nintentions ?",
               style: Theme.of(context).textTheme.headlineLarge!.copyWith(),
             ),
             const SizedBox(height: 15),

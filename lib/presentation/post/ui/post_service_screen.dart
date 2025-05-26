@@ -956,7 +956,7 @@ class _PostServiceScreenState extends State<PostServiceScreen> {
             });
           },
           child: CustomCapsule(
-            text: "On-Time",
+            text: "One-Time",
             isSelected: professionalIndex == 0,
           ),
         ),

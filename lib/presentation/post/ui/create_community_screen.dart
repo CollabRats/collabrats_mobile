@@ -292,7 +292,7 @@ class _CreateCommunityScreenState extends State<CreateCommunityScreen> {
                           setState(() {});
                         },
                         hintText: "Add Community Categories",
-                        headText: "Community Settings",
+                        headText: "Community Preferences",
                         controller: _addSkills,
                       ),
                       const SizedBox(height: 10),
