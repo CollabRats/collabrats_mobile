@@ -6,12 +6,16 @@ class CustomCapsule extends StatelessWidget {
   final bool isSelected;
   final bool hasCross;
   final bool isSmall;
+  final Color? bgColor;
+  final Color? borderColor;
   const CustomCapsule({
     super.key,
     required this.text,
     required this.isSelected,
     this.hasCross = false,
     this.isSmall = false,
+    this.bgColor,
+    this.borderColor,
   });
 
   @override
@@ -22,9 +26,12 @@ class CustomCapsule extends StatelessWidget {
         vertical: isSmall ? 4 : 8,
       ),
       decoration: BoxDecoration(
-        color: AppColors.lightPurple,
+        color: bgColor ?? AppColors.lightPurple,
         border: Border.all(
-          color: isSelected ? AppColors.blueColor : AppColors.midPurple,
+          color:
+              isSelected
+                  ? borderColor ?? AppColors.blueColor
+                  : AppColors.midPurple,
           width: 2,
         ),
         borderRadius: BorderRadius.circular(20),
