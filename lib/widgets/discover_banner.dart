@@ -14,7 +14,7 @@ class DiscoverBanner extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Container(
-        width: 320,
+        width: 200,
         height: 32,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.only(

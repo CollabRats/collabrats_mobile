@@ -1,4 +1,5 @@
 import 'package:collabrats_mobile/presentation/discover/ui/gig_screen.dart';
+import 'package:collabrats_mobile/presentation/discover/ui/job_screen.dart';
 import 'package:collabrats_mobile/presentation/discover/ui/people_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax_plus/iconsax_plus.dart';
@@ -11,7 +12,7 @@ class DiscoverScreen extends StatefulWidget {
 }
 
 class _DiscoverScreenState extends State<DiscoverScreen> {
-  List<Widget> discoverWidget = [PeopleScreen(), GigScreen()];
+  List<Widget> discoverWidget = [PeopleScreen(), GigScreen(), JobScreen()];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,7 +27,7 @@ class _DiscoverScreenState extends State<DiscoverScreen> {
         actions: [Icon(IconsaxPlusBold.profile_circle, size: 30)],
         actionsPadding: EdgeInsets.symmetric(horizontal: 10),
       ),
-      body: discoverWidget[1],
+      body: discoverWidget[2],
     );
   }
 }
