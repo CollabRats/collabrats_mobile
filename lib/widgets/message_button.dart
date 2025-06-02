@@ -14,9 +14,8 @@ class MessageButton extends StatelessWidget {
       child: Align(
         alignment: Alignment.centerRight,
         child: Container(
-          height: text != null ? null : 38,
-          width: text == null ? 38 : ScreenUtils.screenWidth * .75,
           padding: EdgeInsets.all(10),
+          width: text == null ? null : ScreenUtils.screenWidth * .78,
           decoration: BoxDecoration(
             border: Border.all(color: AppColors.blueColor),
             borderRadius: BorderRadius.circular(100),

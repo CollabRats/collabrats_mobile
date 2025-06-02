@@ -25,20 +25,19 @@ class _BaseState extends State<Base> {
   }
 
   final List<Widget> listWidget = [
-    ProfileScreen(),
     DiscoverScreen(),
-    PostScreen(),
     RequestScreen(),
+    PostScreen(),
     ChatScreen(),
+    ProfileScreen(),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: listWidget[selectedIndex],
-
       bottomNavigationBar: SizedBox(
-        height: ScreenUtils.screenHeight * .14,
+        height: ScreenUtils.screenHeight * .1,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           mainAxisAlignment: MainAxisAlignment.end,
@@ -46,24 +45,11 @@ class _BaseState extends State<Base> {
             Divider(color: AppColors.greyColor, height: 0),
             BottomNavigationBar(
               backgroundColor: AppColors.whiteColor,
-
+              selectedItemColor: AppColors.blueColor,
               currentIndex: selectedIndex,
               onTap: (value) => setItems(value),
               type: BottomNavigationBarType.fixed,
               items: <BottomNavigationBarItem>[
-                BottomNavigationBarItem(
-                  icon: SvgPicture.asset(
-                    "assets/vectors/profile_inactive.svg",
-                    height: 30,
-                    width: 30,
-                  ),
-                  activeIcon: SvgPicture.asset(
-                    "assets/vectors/profile_active.svg",
-                    height: 30,
-                    width: 30,
-                  ),
-                  label: "Profile",
-                ),
                 BottomNavigationBarItem(
                   icon: SvgPicture.asset(
                     "assets/vectors/discover_inactive.svg",
@@ -76,19 +62,6 @@ class _BaseState extends State<Base> {
                     width: 30,
                   ),
                   label: "Discover",
-                ),
-                BottomNavigationBarItem(
-                  icon: SvgPicture.asset(
-                    "assets/vectors/post_inactive.svg",
-                    height: 30,
-                    width: 30,
-                  ),
-                  activeIcon: SvgPicture.asset(
-                    "assets/vectors/post_active.svg",
-                    height: 30,
-                    width: 30,
-                  ),
-                  label: "Post",
                 ),
                 BottomNavigationBarItem(
                   icon: SvgPicture.asset(
@@ -105,6 +78,20 @@ class _BaseState extends State<Base> {
                 ),
                 BottomNavigationBarItem(
                   icon: SvgPicture.asset(
+                    "assets/vectors/post_inactive.svg",
+                    height: 30,
+                    width: 30,
+                  ),
+                  activeIcon: SvgPicture.asset(
+                    "assets/vectors/post_active.svg",
+                    height: 30,
+                    width: 30,
+                  ),
+                  label: "Post",
+                ),
+
+                BottomNavigationBarItem(
+                  icon: SvgPicture.asset(
                     "assets/vectors/chat_inactive.svg",
                     height: 30,
                     width: 30,
@@ -115,6 +102,19 @@ class _BaseState extends State<Base> {
                     width: 30,
                   ),
                   label: "Chats",
+                ),
+                BottomNavigationBarItem(
+                  icon: SvgPicture.asset(
+                    "assets/vectors/profile_inactive.svg",
+                    height: 30,
+                    width: 30,
+                  ),
+                  activeIcon: SvgPicture.asset(
+                    "assets/vectors/profile_active.svg",
+                    height: 30,
+                    width: 30,
+                  ),
+                  label: "Profile",
                 ),
               ],
             ),

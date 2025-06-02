@@ -15,7 +15,7 @@ class DiscoverBanner extends StatelessWidget {
     return Center(
       child: Container(
         width: 200,
-        height: 32,
+        height: 24,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.only(
             bottomRight: Radius.circular(18),

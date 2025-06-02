@@ -10,7 +10,7 @@ class PostScreen extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(20.0),
+          padding: const EdgeInsets.all(10.0),
           child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -33,7 +33,7 @@ class PostScreen extends StatelessWidget {
                   },
                   imgPath: "assets/vectors/post.svg",
                   headText: "Post Job",
-                  subText: "Hire Talent or find a job opprtunity",
+                  subText: "Hire Talent or find a job opportunity",
                   colorCode: 0xffDCFCE7,
                 ),
                 const SizedBox(height: 10),
@@ -53,7 +53,7 @@ class PostScreen extends StatelessWidget {
                   },
                   imgPath: "assets/vectors/service.svg",
                   headText: "Post Service",
-                  subText: "Hire Talent or find a job opprtunity",
+                  subText: "Hire Talent or find a job opportunity",
                   colorCode: 0xffFCE7F3,
                 ),
                 const SizedBox(height: 10),

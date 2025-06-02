@@ -199,7 +199,7 @@ class _PostJobScreenState extends State<PostJobScreen> {
           ),
         ),
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: SizedBox(
         width: ScreenUtils.screenWidth * 0.85,
         child: CustomButton(text: "Post Job", function: () {}),

@@ -600,7 +600,7 @@ class _PostEventScreenState extends State<PostEventScreen> {
             ),
           ),
           floatingActionButtonLocation:
-              FloatingActionButtonLocation.centerDocked,
+              FloatingActionButtonLocation.centerFloat,
           floatingActionButton: SizedBox(
             width: ScreenUtils.screenWidth * 0.85,
             child: CustomButton(text: "Post Event", function: () {}),

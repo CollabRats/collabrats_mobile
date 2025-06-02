@@ -30,35 +30,36 @@ class PostTile extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Row(
-                children: [
-                  CircleAvatar(
-                    radius: 25,
-                    backgroundColor: Color(colorCode),
-                    child: SvgPicture.asset(imgPath),
-                  ),
-                  const SizedBox(width: 10),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        headText,
-                        style: Theme.of(context).textTheme.headlineSmall,
-                      ),
-                      const SizedBox(height: 6),
-                      Text(
-                        subText,
-                        style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                          color: AppColors.midGreyColor,
+              Expanded(
+                child: Row(
+                  children: [
+                    CircleAvatar(
+                      radius: 25,
+                      backgroundColor: Color(colorCode),
+                      child: SvgPicture.asset(imgPath),
+                    ),
+                    const SizedBox(width: 10),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          headText,
+                          style: Theme.of(context).textTheme.headlineSmall,
                         ),
-                      ),
-                    ],
-                  ),
-                ],
+                        const SizedBox(height: 6),
+                        Text(
+                          subText,
+                          style: Theme.of(context).textTheme.bodyMedium!
+                              .copyWith(color: AppColors.midGreyColor),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
-              IconButton(
-                onPressed: onTap,
-                icon: Icon(Icons.chevron_right_sharp),
+              GestureDetector(
+                onTap: onTap,
+                child: Icon(Icons.chevron_right_sharp),
               ),
             ],
           ),

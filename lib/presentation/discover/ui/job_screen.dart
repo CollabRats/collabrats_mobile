@@ -1,8 +1,11 @@
 import 'package:collabrats_mobile/utils/colors.dart';
-import 'package:collabrats_mobile/utils/screen_utils.dart';
 import 'package:collabrats_mobile/widgets/custom_capsule.dart';
 import 'package:collabrats_mobile/widgets/discover_banner.dart';
+import 'package:collabrats_mobile/widgets/hide_and_report_button.dart';
 import 'package:collabrats_mobile/widgets/message_button.dart';
+import 'package:collabrats_mobile/widgets/recommend_button.dart';
+import 'package:collabrats_mobile/widgets/toggle_button.dart';
+import 'package:collabrats_mobile/widgets/trusted_badge.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:iconsax_plus/iconsax_plus.dart';
@@ -44,20 +47,23 @@ class _JobScreenState extends State<JobScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 ClipRRect(
-                  borderRadius: BorderRadius.circular(16),
+                  borderRadius: BorderRadius.circular(5),
                   child: Image.asset(
                     "assets/images/gig.png",
                     fit: BoxFit.fill,
-                    height: 48,
-                    width: 48,
+                    height: 81,
+                    width: 81,
                   ),
                 ),
                 const SizedBox(width: 15),
                 Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      "UX/UI Designer Intern",
-                      style: Theme.of(context).textTheme.headlineMedium!,
+                      "UX/UI Designer\nIntern",
+                      style: Theme.of(context).textTheme.headlineMedium!
+                          .copyWith(fontSize: 22, fontWeight: FontWeight.w700),
                     ),
                     const SizedBox(height: 5),
                     Text("Info Tech Solutions Pvt. Lmt."),
@@ -68,41 +74,9 @@ class _JobScreenState extends State<JobScreen> {
             const SizedBox(height: 15),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text("Posted 5 hr ago"),
-                Container(
-                  padding: EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    color: Color(0xffF1F7FF),
-                  ),
-                  child: Row(
-                    children: [
-                      SvgPicture.asset(
-                        "assets/vectors/verified_user.svg",
-                        height: 20,
-                      ),
-                      Text(
-                        "  Trusted by collabrats",
-                        style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                          color: AppColors.blueColor,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
+              children: [Text("Posted 5 hr ago"), TrustedBadge()],
             ),
-            const SizedBox(height: 5),
-            Text(
-              "UX/UI Designer for app and website Redesign",
-              style: Theme.of(
-                context,
-              ).textTheme.headlineMedium!.copyWith(fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(height: 5),
-            Text("Info Tech Solutions Pvt. Lmt."),
-            const SizedBox(height: 5),
+            const SizedBox(height: 15),
             Row(
               children: [
                 SvgPicture.asset("assets/vectors/location.svg"),
@@ -110,7 +84,7 @@ class _JobScreenState extends State<JobScreen> {
                 Text("New Delhi, India"),
               ],
             ),
-            const SizedBox(height: 10),
+            const SizedBox(height: 15),
             Wrap(
               runSpacing: 8,
               spacing: 8,
@@ -118,6 +92,7 @@ class _JobScreenState extends State<JobScreen> {
                   gitFeat
                       .map(
                         (val) => CustomCapsule(
+                          isSmall: true,
                           text: val,
                           isSelected: true,
                           borderColor: Color(0xff16A34A),
@@ -126,14 +101,10 @@ class _JobScreenState extends State<JobScreen> {
                       )
                       .toList(),
             ),
-            const SizedBox(height: 10),
-            Align(
-              child: MessageButton(text: "Want to send personalized message?"),
-            ),
             const SizedBox(height: 15),
-            Container(
-              padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-              height: ScreenUtils.screenHeight * .18,
+            MessageButton(text: "Want to send personalized message?"),
+            const SizedBox(height: 15),
+            SizedBox(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -154,45 +125,44 @@ class _JobScreenState extends State<JobScreen> {
             ),
             const SizedBox(height: 15),
             Container(
-              padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-              height: ScreenUtils.screenHeight * .1,
               decoration: BoxDecoration(color: Color(0xffFAF9F6)),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        "Budget",
-                        style: Theme.of(
-                          context,
-                        ).textTheme.headlineMedium!.copyWith(
-                          color: AppColors.midGreyColor,
-                          fontWeight: FontWeight.bold,
+              child: Padding(
+                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "Budget",
+                          style: Theme.of(
+                            context,
+                          ).textTheme.headlineMedium!.copyWith(
+                            color: AppColors.midGreyColor,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
-                      ),
-                      Text(
-                        "\$200- \$500",
-                        style: Theme.of(context).textTheme.bodyMedium,
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 15),
-                  Row(
-                    children: [
-                      Icon(IconsaxPlusLinear.like_dislike),
-                      const SizedBox(width: 5),
-                      Text("Open for budget negotiation"),
-                    ],
-                  ),
-                ],
+                        Text(
+                          "\$200- \$500",
+                          style: Theme.of(context).textTheme.bodyMedium,
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 15),
+                    Row(
+                      children: [
+                        Icon(IconsaxPlusLinear.like_dislike),
+                        const SizedBox(width: 5),
+                        Text("Open for budget negotiation"),
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
             const SizedBox(height: 15),
-            Container(
-              padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-              height: ScreenUtils.screenHeight * .17,
+            SizedBox(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -212,6 +182,7 @@ class _JobScreenState extends State<JobScreen> {
                             .map(
                               (val) => CustomCapsule(
                                 text: val,
+                                isSmall: true,
                                 isSelected: true,
                                 borderColor: Color(0xff16A34A),
                                 bgColor: Color(0xffDCFCE7),
@@ -223,9 +194,7 @@ class _JobScreenState extends State<JobScreen> {
               ),
             ),
             const SizedBox(height: 15),
-            Container(
-              padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-              height: ScreenUtils.screenHeight * .23,
+            SizedBox(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -245,65 +214,11 @@ class _JobScreenState extends State<JobScreen> {
               ),
             ),
             const SizedBox(height: 25),
-            SizedBox(
-              height: ScreenUtils.screenHeight * .19,
-              width: ScreenUtils.screenWidth * .9,
-              child: Stack(
-                children: [
-                  Positioned(
-                    left: ScreenUtils.screenWidth * .35,
-                    child: GestureDetector(
-                      onTap: () {},
-                      child: SvgPicture.asset("assets/vectors/Super Like.svg"),
-                    ),
-                  ),
-                  Positioned(
-                    bottom: 10,
-                    left: 10,
-                    child: GestureDetector(
-                      onTap: () {},
-                      child: SvgPicture.asset("assets/vectors/Dislike.svg"),
-                    ),
-                  ),
-                  Positioned(
-                    bottom: 10,
-                    right: 10,
-                    child: GestureDetector(
-                      onTap: () {},
-                      child: SvgPicture.asset("assets/vectors/Like.svg"),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            const SizedBox(height: 15),
-            Center(
-              child: InkWell(
-                borderRadius: BorderRadius.circular(10),
-                onTap: () {},
-                child: Container(
-                  padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-                  decoration: BoxDecoration(
-                    border: Border.all(color: AppColors.blackColor),
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Text("Recommend to a friend"),
-                ),
-              ),
-            ),
+            ToggleButton(),
+            const SizedBox(height: 20),
+            RecommendButton(),
             const SizedBox(height: 10),
-            Center(
-              child: TextButton(
-                style: ButtonStyle(
-                  overlayColor: WidgetStatePropertyAll(
-                    AppColors.lightGreyColor,
-                  ),
-                  foregroundColor: WidgetStatePropertyAll(AppColors.blackColor),
-                ),
-                onPressed: () {},
-                child: Text("Hide and Report"),
-              ),
-            ),
+            HideAndReportButton(),
           ],
         ),
       ),

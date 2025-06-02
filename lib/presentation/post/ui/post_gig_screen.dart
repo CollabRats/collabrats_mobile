@@ -286,7 +286,7 @@ class _PostGigScreenState extends State<PostGigScreen> {
           ),
         ),
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: SizedBox(
         width: ScreenUtils.screenWidth * 0.85,
         child: CustomButton(text: "Post Gig", function: () {}),

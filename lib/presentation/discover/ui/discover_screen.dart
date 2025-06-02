@@ -1,8 +1,10 @@
+import 'package:collabrats_mobile/presentation/discover/ui/community_screen.dart';
+import 'package:collabrats_mobile/presentation/discover/ui/event_screen.dart';
 import 'package:collabrats_mobile/presentation/discover/ui/gig_screen.dart';
 import 'package:collabrats_mobile/presentation/discover/ui/job_screen.dart';
 import 'package:collabrats_mobile/presentation/discover/ui/people_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:iconsax_plus/iconsax_plus.dart';
+import 'package:flutter_svg/svg.dart';
 
 class DiscoverScreen extends StatefulWidget {
   const DiscoverScreen({super.key});
@@ -12,7 +14,13 @@ class DiscoverScreen extends StatefulWidget {
 }
 
 class _DiscoverScreenState extends State<DiscoverScreen> {
-  List<Widget> discoverWidget = [PeopleScreen(), GigScreen(), JobScreen()];
+  List<Widget> discoverWidget = [
+    PeopleScreen(),
+    GigScreen(),
+    JobScreen(),
+    EventScreen(),
+    CommunityScreen(),
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,10 +32,15 @@ class _DiscoverScreenState extends State<DiscoverScreen> {
         title: Text("CollabRats"),
         bottomOpacity: 0,
         elevation: 0,
-        actions: [Icon(IconsaxPlusBold.profile_circle, size: 30)],
+        actions: [
+          InkWell(
+            onTap: () {},
+            child: SvgPicture.asset("assets/vectors/page_info.svg"),
+          ),
+        ],
         actionsPadding: EdgeInsets.symmetric(horizontal: 10),
       ),
-      body: discoverWidget[2],
+      body: discoverWidget[4],
     );
   }
 }

@@ -470,7 +470,7 @@ class _CreateCommunityScreenState extends State<CreateCommunityScreen> {
             ),
           ),
           floatingActionButtonLocation:
-              FloatingActionButtonLocation.centerDocked,
+              FloatingActionButtonLocation.centerFloat,
           floatingActionButton: SizedBox(
             width: ScreenUtils.screenWidth * 0.85,
             child: CustomButton(text: "Create Community", function: () {}),

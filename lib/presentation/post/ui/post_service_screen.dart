@@ -931,7 +931,7 @@ class _PostServiceScreenState extends State<PostServiceScreen> {
                 ),
               ),
               floatingActionButtonLocation:
-                  FloatingActionButtonLocation.centerDocked,
+                  FloatingActionButtonLocation.centerFloat,
               floatingActionButton: SizedBox(
                 width: ScreenUtils.screenWidth * 0.85,
                 child: CustomButton(text: "Post Service", function: () {}),
