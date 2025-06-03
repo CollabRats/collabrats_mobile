@@ -59,6 +59,7 @@ class AppTheme {
     textSelectionTheme: const TextSelectionThemeData(
       cursorColor: AppColors.blackColor,
     ),
+
     scaffoldBackgroundColor: AppColors.whiteColor,
     primaryColor: AppColors.blueColor,
   );

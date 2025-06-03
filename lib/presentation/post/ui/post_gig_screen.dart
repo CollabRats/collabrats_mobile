@@ -56,6 +56,7 @@ class _PostGigScreenState extends State<PostGigScreen> {
   List<String> skills = [];
   @override
   Widget build(BuildContext context) {
+    final bool showFab = MediaQuery.of(context).viewInsets.bottom == 0.0;
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -287,10 +288,13 @@ class _PostGigScreenState extends State<PostGigScreen> {
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      floatingActionButton: SizedBox(
-        width: ScreenUtils.screenWidth * 0.85,
-        child: CustomButton(text: "Post Gig", function: () {}),
-      ),
+      floatingActionButton:
+          showFab
+              ? SizedBox(
+                width: ScreenUtils.screenWidth * 0.85,
+                child: CustomButton(text: "Post Gig", function: () {}),
+              )
+              : null,
     );
   }
 

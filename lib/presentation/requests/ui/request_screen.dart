@@ -1,4 +1,3 @@
-import 'package:blur/blur.dart';
 import 'package:collabrats_mobile/utils/colors.dart';
 import 'package:collabrats_mobile/utils/screen_utils.dart';
 import 'package:collabrats_mobile/widgets/custom_button.dart';
@@ -87,120 +86,114 @@ class _RequestScreenState extends State<RequestScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.only(top: 20, left: 20, right: 20),
-          child: SingleChildScrollView(
-            child:
-                isCollab
-                    ? itsACollab()
-                    : Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "See who wants to collab",
-                          style: Theme.of(context).textTheme.headlineLarge!,
-                        ),
-                        const SizedBox(height: 10),
-                        index == 0
-                            ? Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  "They’re into you! If you’re into them too, like them back to match instantly",
-                                  style:
-                                      Theme.of(context).textTheme.bodyMedium!,
+      body: Padding(
+        padding: const EdgeInsets.only(top: 50, left: 20, right: 20),
+        child: SingleChildScrollView(
+          child:
+              isCollab
+                  ? itsACollab()
+                  : Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "See who wants to collab",
+                        style: Theme.of(context).textTheme.headlineLarge!,
+                      ),
+                      const SizedBox(height: 10),
+                      index == 0
+                          ? Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                "They’re into you! If you’re into them too, like them back to match instantly",
+                                style: Theme.of(context).textTheme.bodyMedium!,
+                              ),
+                              SizedBox(height: ScreenUtils.screenHeight * .2),
+                              Center(
+                                child: Image.asset(
+                                  "assets/images/find_people.png",
                                 ),
-                                SizedBox(height: ScreenUtils.screenHeight * .2),
-                                Center(
-                                  child: Image.asset(
-                                    "assets/images/find_people.png",
-                                  ),
-                                ),
-                                Text(
-                                  textAlign: TextAlign.center,
-                                  "You have no request pending, Swipe more to collab",
-                                  style: Theme.of(context).textTheme.bodyLarge!,
-                                ),
-                              ],
-                            )
-                            : Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  "They’re into you! If you’re into them too, like them back to match instantly",
-                                  style:
-                                      Theme.of(context).textTheme.bodyMedium!,
-                                ),
-                                const SizedBox(height: 15),
-                                SingleChildScrollView(
-                                  scrollDirection: Axis.horizontal,
-                                  child: Row(
-                                    children:
-                                        capsuleList
-                                            .map(
-                                              (val) => GestureDetector(
-                                                onTap: () {
-                                                  setState(() {
-                                                    selectedVal = val;
-                                                  });
-                                                },
-                                                child: Padding(
-                                                  padding:
-                                                      const EdgeInsets.only(
-                                                        right: 12,
-                                                      ),
-                                                  child: CustomCapsule(
-                                                    text: val,
-                                                    isSelected:
-                                                        val == selectedVal,
-                                                  ),
+                              ),
+                              Text(
+                                textAlign: TextAlign.center,
+                                "You have no request pending, Swipe more to collab",
+                                style: Theme.of(context).textTheme.bodyLarge!,
+                              ),
+                            ],
+                          )
+                          : Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                "They’re into you! If you’re into them too, like them back to match instantly",
+                                style: Theme.of(context).textTheme.bodyMedium!,
+                              ),
+                              const SizedBox(height: 15),
+                              SingleChildScrollView(
+                                scrollDirection: Axis.horizontal,
+                                child: Row(
+                                  children:
+                                      capsuleList
+                                          .map(
+                                            (val) => GestureDetector(
+                                              onTap: () {
+                                                setState(() {
+                                                  selectedVal = val;
+                                                });
+                                              },
+                                              child: Padding(
+                                                padding: const EdgeInsets.only(
+                                                  right: 12,
+                                                ),
+                                                child: CustomCapsule(
+                                                  text: val,
+                                                  isSelected:
+                                                      val == selectedVal,
                                                 ),
                                               ),
-                                            )
-                                            .toList(),
+                                            ),
+                                          )
+                                          .toList(),
+                                ),
+                              ),
+                              const SizedBox(height: 25),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  InkWell(
+                                    onTap: () {
+                                      setState(() {
+                                        isCollab = true;
+                                      });
+                                    },
+                                    child: CustomRequestImgStack(),
                                   ),
-                                ),
-                                const SizedBox(height: 25),
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
-                                  children: [
-                                    InkWell(
-                                      onTap: () {
-                                        setState(() {
-                                          isCollab = true;
-                                        });
-                                      },
-                                      child: CustomRequestImgStack(),
-                                    ),
-                                    CustomRequestImgStack(),
-                                  ],
-                                ),
-                                const SizedBox(height: 10),
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
-                                  children: [
-                                    CustomRequestImgStack(),
-                                    CustomRequestImgStack(),
-                                  ],
-                                ),
-                              ],
-                            ),
-                        const SizedBox(height: 15),
-                        CustomButton(
-                          text:
-                              index == 0 ? "Collab More" : "See who liked you",
-                          function: () {
-                            setState(() {
-                              index = 1;
-                            });
-                          },
-                        ),
-                      ],
-                    ),
-          ),
+                                  CustomRequestImgStack(),
+                                ],
+                              ),
+                              const SizedBox(height: 10),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  CustomRequestImgStack(),
+                                  CustomRequestImgStack(),
+                                ],
+                              ),
+                            ],
+                          ),
+                      const SizedBox(height: 15),
+                      CustomButton(
+                        text: index == 0 ? "Collab More" : "See who liked you",
+                        function: () {
+                          setState(() {
+                            index = 1;
+                          });
+                        },
+                      ),
+                    ],
+                  ),
         ),
       ),
     );

@@ -468,6 +468,7 @@ class _PostServiceScreenState extends State<PostServiceScreen> {
   List<String> skills = [];
   @override
   Widget build(BuildContext context) {
+    final bool showFab = MediaQuery.of(context).viewInsets.bottom == 0.0;
     return BlocBuilder<AddPackageCubit, List<AddPackageModel>>(
       builder: (context, packageList) {
         return BlocBuilder<AddProjectCubit, List<AddProjectModel>>(
@@ -932,10 +933,16 @@ class _PostServiceScreenState extends State<PostServiceScreen> {
               ),
               floatingActionButtonLocation:
                   FloatingActionButtonLocation.centerFloat,
-              floatingActionButton: SizedBox(
-                width: ScreenUtils.screenWidth * 0.85,
-                child: CustomButton(text: "Post Service", function: () {}),
-              ),
+              floatingActionButton:
+                  showFab
+                      ? SizedBox(
+                        width: ScreenUtils.screenWidth * 0.85,
+                        child: CustomButton(
+                          text: "Post Service",
+                          function: () {},
+                        ),
+                      )
+                      : null,
             );
           },
         );

@@ -211,6 +211,7 @@ class _PostEventScreenState extends State<PostEventScreen> {
   List<String> skills = [];
   @override
   Widget build(BuildContext context) {
+    final bool showFab = MediaQuery.of(context).viewInsets.bottom == 0.0;
     return BlocBuilder<AddTicketCubit, List<AddTicketModel>>(
       builder: (context, ticketList) {
         return Scaffold(
@@ -601,10 +602,13 @@ class _PostEventScreenState extends State<PostEventScreen> {
           ),
           floatingActionButtonLocation:
               FloatingActionButtonLocation.centerFloat,
-          floatingActionButton: SizedBox(
-            width: ScreenUtils.screenWidth * 0.85,
-            child: CustomButton(text: "Post Event", function: () {}),
-          ),
+          floatingActionButton:
+              showFab
+                  ? SizedBox(
+                    width: ScreenUtils.screenWidth * 0.85,
+                    child: CustomButton(text: "Post Event", function: () {}),
+                  )
+                  : null,
         );
       },
     );

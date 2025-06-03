@@ -3,6 +3,7 @@ import 'package:collabrats_mobile/presentation/discover/ui/event_screen.dart';
 import 'package:collabrats_mobile/presentation/discover/ui/gig_screen.dart';
 import 'package:collabrats_mobile/presentation/discover/ui/job_screen.dart';
 import 'package:collabrats_mobile/presentation/discover/ui/people_screen.dart';
+import 'package:collabrats_mobile/presentation/discover/ui/service_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -20,6 +21,7 @@ class _DiscoverScreenState extends State<DiscoverScreen> {
     JobScreen(),
     EventScreen(),
     CommunityScreen(),
+    ServiceScreen(),
   ];
   @override
   Widget build(BuildContext context) {
@@ -40,7 +42,7 @@ class _DiscoverScreenState extends State<DiscoverScreen> {
         ],
         actionsPadding: EdgeInsets.symmetric(horizontal: 10),
       ),
-      body: discoverWidget[4],
+      body: discoverWidget[5],
     );
   }
 }

@@ -8,6 +8,7 @@ class CustomCapsule extends StatelessWidget {
   final bool isSmall;
   final Color? bgColor;
   final Color? borderColor;
+  final Color? textColor;
   const CustomCapsule({
     super.key,
     required this.text,
@@ -16,6 +17,7 @@ class CustomCapsule extends StatelessWidget {
     this.isSmall = false,
     this.bgColor,
     this.borderColor,
+    this.textColor,
   });
 
   @override
@@ -36,7 +38,12 @@ class CustomCapsule extends StatelessWidget {
         ),
         borderRadius: BorderRadius.circular(20),
       ),
-      child: Text("$text${hasCross ? "    X" : ""}"),
+      child: Text(
+        "$text${hasCross ? "    X" : ""}",
+        style: Theme.of(
+          context,
+        ).textTheme.bodyMedium!.copyWith(color: textColor),
+      ),
     );
   }
 }

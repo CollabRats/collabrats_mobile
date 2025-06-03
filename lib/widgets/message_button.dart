@@ -23,6 +23,7 @@ class MessageButton extends StatelessWidget {
           child:
               text != null
                   ? Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       SvgPicture.asset("assets/vectors/send_msg.svg"),
                       const SizedBox(width: 5),

@@ -24,6 +24,7 @@ class _PostJobScreenState extends State<PostJobScreen> {
   List<String> skills = [];
   @override
   Widget build(BuildContext context) {
+    final bool showFab = MediaQuery.of(context).viewInsets.bottom == 0.0;
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -200,10 +201,13 @@ class _PostJobScreenState extends State<PostJobScreen> {
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      floatingActionButton: SizedBox(
-        width: ScreenUtils.screenWidth * 0.85,
-        child: CustomButton(text: "Post Job", function: () {}),
-      ),
+      floatingActionButton:
+          showFab
+              ? SizedBox(
+                width: ScreenUtils.screenWidth * 0.85,
+                child: CustomButton(text: "Post Job", function: () {}),
+              )
+              : null,
     );
   }
 

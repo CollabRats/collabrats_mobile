@@ -211,6 +211,7 @@ class _CreateCommunityScreenState extends State<CreateCommunityScreen> {
   List<String> skills = [];
   @override
   Widget build(BuildContext context) {
+    final bool showFab = MediaQuery.of(context).viewInsets.bottom == 0.0;
     return BlocBuilder<AddTicketCubit, List<AddTicketModel>>(
       builder: (context, ticketList) {
         return Scaffold(
@@ -471,10 +472,16 @@ class _CreateCommunityScreenState extends State<CreateCommunityScreen> {
           ),
           floatingActionButtonLocation:
               FloatingActionButtonLocation.centerFloat,
-          floatingActionButton: SizedBox(
-            width: ScreenUtils.screenWidth * 0.85,
-            child: CustomButton(text: "Create Community", function: () {}),
-          ),
+          floatingActionButton:
+              showFab
+                  ? SizedBox(
+                    width: ScreenUtils.screenWidth * 0.85,
+                    child: CustomButton(
+                      text: "Create Community",
+                      function: () {},
+                    ),
+                  )
+                  : null,
         );
       },
     );
